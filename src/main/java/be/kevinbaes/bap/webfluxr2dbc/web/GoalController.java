@@ -2,7 +2,6 @@ package be.kevinbaes.bap.webfluxr2dbc.web;
 
 import be.kevinbaes.bap.webfluxr2dbc.persistence.Goal;
 import be.kevinbaes.bap.webfluxr2dbc.persistence.GoalRepository;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -18,7 +17,6 @@ public class GoalController {
   }
 
   @GetMapping
-  @Transactional
   public Flux<Goal> findAll(@RequestParam(value = "limit", required = false) Integer limit) {
         if(limit == null) {
             return goalRepository.findAll();
